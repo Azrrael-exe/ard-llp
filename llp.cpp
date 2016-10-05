@@ -72,7 +72,7 @@ bool DataPack::available(Stream& inp){
   return 0;
 }
 
-uint8_t* DataPack::getIndexs(){
+uint8_t* DataPack::getKeys(){
   uint8_t* out = (uint8_t *) calloc(inp_data, sizeof(uint8_t));
   for(int i=0;i<inp_data;i++){
     out[i] = inp_buffer[(3*i)];
@@ -82,6 +82,15 @@ uint8_t* DataPack::getIndexs(){
 
 uint8_t DataPack::inWaiting(){
   return inp_data;
+}
+
+bool DataPack::hasKey(uint8_t key){
+  for(int i = 0; i < inp_data*3 ; i+=3){
+    if(key == inp_buffer[i]){
+      return true;
+    }
+  }
+  return false;
 }
 
 uint16_t DataPack::getData(uint8_t key){

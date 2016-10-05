@@ -13,7 +13,8 @@ public:
   bool available(Stream& inp);
   uint16_t getData(uint8_t key);
   uint8_t inWaiting();
-  uint8_t* getIndexs();
+  uint8_t* getKeys();
+  bool hasKey(uint8_t);
 private:
   int8_t calCheckSum();
   uint8_t buffer[90];
